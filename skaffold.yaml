@@ -1,0 +1,15 @@
+---
+apiVersion: skaffold/v2beta27
+kind: Config
+metadata:
+  name: pinger
+build:
+  artifacts:
+    - image: ping-example
+      docker:
+        dockerfile: Dockerfile
+deploy:
+  kubectl:
+    manifests:
+      - "./deployment.yaml"
+    defaultNamespace: pinger

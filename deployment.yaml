@@ -1,0 +1,20 @@
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: pinger
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pinger
+  template:
+    metadata:
+      labels:
+        app: pinger
+    spec:
+      containers:
+        - image: eu.gcr.io/rs-develop-246409/ping-example
+          imagePullPolicy: IfNotPresent
+          name: pinger
+          args: ["127.0.0.1"]
